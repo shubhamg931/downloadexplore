@@ -1,0 +1,33 @@
+<% include layouts/header %>
+  <div class="container text-center" style="">
+    <h1>Add New <%=title%></h1>
+    <br><br>
+    <div class="row">
+      <div class="col-md-3">
+      </div>
+      <div class="col-md-6">
+        <form style="border: 2px solid grey; padding:50px;" action="/add/<%=title%>" method="POST">
+          <div class="form-group">
+            <label class="pull-left" for="name">Name</label>
+            <input type="text" class="form-control" id="name" placeholder="Name" name="name">
+          </div>
+          <div class="form-group">
+            <label class="pull-left" for="description">Description</label>
+            <input type="text" class="form-control" id="description" placeholder="Description" name="description">
+          </div>
+          <div class="form-group">
+            <label class="pull-left" for="url">Image Url</label>
+            <input type="text" class="form-control" id="url" placeholder="Url" name="url">
+          </div>
+          <div class="form-group">
+            <label class="pull-left" for="redirect">Redirect Url(Enter complete URL)</label>
+            <input type="text" class="form-control" id="redirect" placeholder="Url" name="redirect">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+      </div>
+      <div class="col-md-3">
+      </div>
+    </div>
+  </div>
+<% include layouts/footer %>

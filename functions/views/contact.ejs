@@ -1,0 +1,93 @@
+<% include layouts/header %>
+<link rel="stylesheet" href="stylesheets/contact.css">
+  <br>
+  <div class="container">
+      <div class="row">
+          <div class="col-md-12">
+              <div class="well well-sm">
+                  <form class="form-horizontal" method="post">
+                      <fieldset>
+                          <legend class="text-center header">Contact us</legend>
+                          <div class="form-group">
+                              <div class="col-md-10 col-md-offset-1">
+                                <i class="fa fa-user-circle" aria-hidden="true"></i><input id="fname" name="name" type="text" placeholder="First Name" class="form-control">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <div class="col-md-10 col-md-offset-1">
+                                  <i class="fa fa-user-circle" aria-hidden="true"></i><input id="lname" name="name" type="text" placeholder="Last Name" class="form-control">
+                              </div>
+                          </div>
+
+                          <div class="form-group">
+                              <div class="col-md-10 col-md-offset-1">
+                                  <i class="fa fa-envelope" aria-hidden="true"></i><input id="email" name="email" type="text" placeholder="Email Address" class="form-control">
+                              </div>
+                          </div>
+
+                          <div class="form-group">
+                              <div class="col-md-10 col-md-offset-1">
+                                  <i class="fa fa-phone-square" aria-hidden="true"></i><input id="phone" name="phone" type="text" placeholder="Phone" class="form-control">
+                              </div>
+                          </div>
+
+                          <div class="form-group">
+                              <div class="col-md-10 col-md-offset-1">
+                                  <textarea class="form-control" id="message" name="message" placeholder="Enter your message for us here. We will get back to you within 2 business days." rows="7"></textarea>
+                              </div>
+                          </div>
+
+                          <div class="form-group">
+                              <div class="col-md-12 text-center">
+                                  <button style="width:50%;" type="submit" class="btn btn-primary btn-lg">Submit</button>
+                              </div>
+                          </div>
+                      </fieldset>
+                  </form>
+              </div>
+          </div>
+          <div class="col-md-12">
+              <div>
+                  <div class="panel panel-default">
+                      <div class="text-center header">Our Office</div>
+                      <div class="panel-body text-center">
+                          <h4>Address</h4>
+                          <div>
+                          2217 Washington Blvd<br />
+                          Washington DC<br />
+                          #(703) 1234 1234<br />
+                          service@company.com<br />
+                          </div>
+                          <hr />
+                          <div id="map1" class="map">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <script src="http://maps.google.com/maps/api/js?key=AIzaSyAGrQJWI9xJLYR-orA_KFPXdaj9IvGbbJA&callback=initMap"></script>
+
+  <script type="text/javascript">
+      jQuery(function ($) {
+          function init_map1() {
+              var myLocation = new google.maps.LatLng(35.4038480, 32.9209610);
+              var mapOptions = {
+                  center: myLocation,
+                  zoom: 16
+              };
+              var marker = new google.maps.Marker({
+                  position: myLocation,
+                  title: "Property Location"
+              });
+              var map = new google.maps.Map(document.getElementById("map1"),
+                  mapOptions);
+              marker.setMap(map);
+          }
+          init_map1();
+      });
+  </script>
+
+<% include layouts/footer %>

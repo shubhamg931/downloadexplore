@@ -1,0 +1,126 @@
+<% include layouts/header
+  var key = 0;
+ %>
+<link rel="stylesheet" href="/stylesheets/ac.css"><br>
+<div class="row">
+  <div class="col-xs-6">
+    <a href="/downloads"><button class="btn btn-lg btn-info"><i class="fa fa-arrow-circle-left" aria-hidden="true"></i>
+    Categories</button></a>
+  </div>
+  <%if(rights){%>
+  <div class="col-xs-6">
+    <a class="pull-right" href="/add/<%=pagename%>"><button class="btn btn-lg btn-info"><i class="fa fa-plus-circle" aria-hidden="true"></i>
+    Add New</button></a>
+  </div>
+  <%}%>
+</div>
+<div class="container text-center">
+  <h1><%=page.icon%></i>
+Available <%=pagename%></h1>
+  <br><br>
+  <input type="text" id="myInput" placeholder="Search for names..">
+  <br><br>
+  <div class="row" id = "row">
+    <%
+    if(page){
+    siz = page.length;
+    for(i=0;i<siz;++i){
+    %>
+      <div class="col-sm-6 col-md-4" id = "col">
+        <div class="thumbnail">
+          <img src = "<%= page[i].logo %>" alt="...">
+          <div class="caption">
+            <h3><%= page[i].name %></h3>
+            <p><%=page[i].description%></p>
+            <p id = "clk<%=i%>"><a style= "width:100%;" href="<%=page[i].url%>" onclick="location.href='/downloads/<%= page[i].lid %>'" target="_blank" class="btn btn-primary" role="button">Download</a></p>
+            <% if(rights){ %>
+            <p><form action="/delete/<%=pagename%>/<%= page[i]._id%>?_method=DELETE" method="POST"><button style="width:100%;" class= "btn btn-danger">Delete!</button></form></p>
+            <p><form action="/edit/<%=pagename%>/<%= page[i].lid%>" method="GET"><button style="width:100%;" class= "btn btn-info">Edit!</button></form></p>
+
+            <%}%></div>
+        </div>
+      </div>
+    <%
+    }
+  }else{
+    console.log("ERror");
+  }
+    %>
+  </div>
+</div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="automatic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title text-center" id="myModalLabel">Welcome to DownloadExplore!</h4>
+        </div>
+        <div class="modal-body" style="font-family: 'Josefin Sans', sans-serif;">
+            <h3 class="text-center">Love <%=pagename%> ?</h3>
+            <br>
+            <h4>Well who does not.. Get all the updates related to netflix!</h4>
+            <br>
+            <h2 class="text-center">Subscribe to our Newsletter for latest offers and stuff about <%=pagename%></h2>
+            <br>
+            <img src="http://yournerdybestfriend.com/wp-content/uploads/2014/10/Beth-Cartoon-with-Sign-Get-the-Newsletter.png" style="width:50%">
+            <br><br><br>
+            <form action="/email/<%=pagename%>" method="POST">
+              <div class="form-group">
+                <label for="Name">Your Name</label>
+                <input type="name" class="form-control" id="Name" name="name" placeholder="Your Full Name Goes In Here" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your Valid Email Address" required>
+              </div>
+              <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+<%if(subscribed === 0){%>
+<script type="text/javascript">
+setTimeout(
+  function()
+  {
+    $('#automatic').modal({
+      keyboard: false
+    })
+    //do something special
+  }, 10000);
+</script>
+<%}%>
+
+<script type="text/javascript">
+$(document).ready(function(){
+  function myFunction() {
+    input = document.getElementById('myInput');
+    filter = input.value.toUpperCase();
+    col = document.getElementById("row");
+    li = col.getElementsByClassName('thumbnail');
+
+    // Loop through all list items, and hide those who don't match the search query
+    for (i = 0; i < li.length; i++) {
+        h = li[i].getElementsByTagName("h3")[0];
+        if (h.innerHTML.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+  }
+
+  $("#myInput").on("keyup",function(){
+    myFunction();
+  });
+});
+</script>
+<% include layouts/footer %>

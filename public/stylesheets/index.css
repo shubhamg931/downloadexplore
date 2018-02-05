@@ -1,0 +1,57 @@
+.left{
+  background-image: url("/images/cover.jpg");
+  background-repeat:   no-repeat;
+  -webkit-background-size: 100% 100%;
+  -moz-background-size: 100% 100%;
+  -o-background-size: 100% 100%;
+  background-size:100% 100%;
+  margin:0;
+  padding:0px;;
+}
+
+.inside{
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  width: 100%;
+}
+iframe{
+  margin: 50px;
+  width: 80%;
+  height: 400px;
+}
+.btw{
+  color: white;
+}
+
+.btw h2{
+  letter-spacing: 1px;
+  font-size: 40px;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.btw p{
+  font-size: 20px;
+  letter-spacing: 0.5px;
+}
+
+.logo1{
+  box-shadow: 1px 1px 1px black;
+  width: 50vh;
+}
+
+.button{
+  width: 50vh;
+}
+
+ul{
+  list-style-type: none;
+}
+.highlight{
+  text-shadow: 1px 1px 1px black;
+  color: #65FF00;
+  font-weight: 700;
+}
+.highlight:hover{
+  text-shadow: 1px 1px 1px black;
+  color: white;
+}

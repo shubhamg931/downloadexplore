@@ -1,0 +1,239 @@
+<% include layouts/header %>
+<div class="container text-center">
+  <h1>Admin Page</h1>
+  <br><hr>
+  <div class="row">
+    <div class="col-xs-4">
+      <div style="text-align:left" class="dropdown">
+       <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Filter
+       <span class="caret"></span></button>
+       <ul class="dropdown-menu">
+         <li><a href="#" data-toggle="modal" data-target="#country">Country</a></li>
+         <li><a href="#" data-toggle="modal" data-target="#state">State</a></li>
+         <li><a href="#" data-toggle="modal" data-target="#date">Date</a></li>
+       </ul>
+     </div>
+    </div>
+    <div class="col-xs-4">
+      <button data-toggle="modal" data-target="#subscriber" class="btn btn-success">Subscriber List!</button>
+    </div>
+    <div class="col-xs-4">
+      <div class="pull-right">
+        <a href="/logout"><button class="btn btn-primary">Logout</button></a>
+      </div>
+    </div>
+  </div>
+
+  <hr>
+<div id="subscriber" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Subscribers</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-xs-1">
+            <strong>S.No.</strong>
+          </div>
+          <div class="col-xs-4">
+            <strong>Name</strong>
+          </div>
+          <div class="col-xs-4">
+            <strong>Email ID</strong>
+          </div>
+          <div class="col-xs-3">
+            <strong>category</strong>
+          </div>
+        </div>
+        <br>
+        <%
+        siz = subscriber.length;
+        for(i=0;i<siz;++i){%>
+        <div class="row">
+          <div class="col-xs-1">
+            <%=i+1%>.
+          </div>
+          <div class="col-xs-4">
+            <%=subscriber[i].name%>
+          </div>
+          <div class="col-xs-4">
+            <%=subscriber[i].email%>
+          </div>
+          <div class="col-xs-3">
+            <%=subscriber[i].category%>
+          </div>
+        </div>
+        <%}%>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div id="country" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Countries</h4>
+      </div>
+      <div class="modal-body">
+      <ul class="list-group">
+
+        <%
+        var siz = countrywise.length;
+        for(var i=0;i<siz;++i){
+        %>
+        <a href="/admin/filter/<%= countrywise[i]._id %>"><li style="min-height:40px;" class="list-group-item">
+          <span class="badge"><%= countrywise[i].total %></span>
+          <%= countrywise[i]._id %>
+        </li></a>
+        <%}%>
+      </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div id="state" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">States</h4>
+      </div>
+      <div class="modal-body">
+      <ul class="list-group">
+
+        <%
+        var siz = statewise.length;
+        for(var i=0;i<siz;++i){
+        %>
+        <a href="/admin/filter/<%= statewise[i]._id %>"><li style="min-height:40px;" class="list-group-item">
+          <span class="badge"><%= statewise[i].total %></span>
+          <%= statewise[i]._id %>
+        </li></a>
+        <%}%>
+      </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div id="date" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">States</h4>
+      </div>
+      <div class="modal-body">
+      <ul class="list-group">
+
+        <%
+        var siz = datewise.length;
+        for(var i=0;i<siz;++i){
+          var date = encodeURIComponent(datewise[i]._id);
+        %>
+        <a href="/admin/filter/<%= date %>"><li style="min-height:40px;" class="list-group-item">
+          <span class="badge"><%= datewise[i].total %></span>
+          <%= datewise[i]._id %>
+        </li></a>
+        <%}%>
+      </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+  <div class= "row">
+    <div class = "col-xs-1 text-center">
+      <h3>S.No.</h3>
+    </div>
+    <div class = "col-xs-2 text-center">
+      <h3>Ip address</h3>
+    </div>
+    <div class = "col-xs-2 text-center">
+      <h3>Entry Date</h3>
+    </div>
+    <div class = "col-xs-1 text-center">
+      <h3>Entry Time</h3>
+    </div>
+    <div class = "col-xs-2 text-center">
+      <h3>Country</h3>
+    </div>
+    <div class = "col-xs-2 text-center">
+      <h3>State</h3>
+    </div>
+    <div class = "col-xs-1 text-center">
+      <h3>Zip code</h3>
+    </div>
+    <div class = "col-xs-1 text-center">
+      <h3>Delete</h3>
+    </div>
+  </div>
+    <br><br>
+  <%
+  var count = users.length;
+  for(i=0;i<count;++i){
+  %>
+  <div class="row">
+    <div class = "col-xs-1 text-center">
+      <h5><%=i+1%>.</h5>
+    </div>
+    <div class = "col-xs-2 text-center">
+      <h5><%=users[i].ip%></h5>
+    </div>
+    <div class = "col-xs-2 text-center">
+      <h5><%=users[i].day%></h5>
+    </div>
+    <div class = "col-xs-1 text-center">
+      <h5><%=users[i].entime%></h5>
+    </div>
+    <div class = "col-xs-2 text-center">
+      <h5><%=users[i].country%></h5>
+    </div>
+    <div class = "col-xs-2 text-center">
+      <h5><%=users[i].state%></h5>
+    </div>
+    <div class = "col-xs-1 text-center">
+      <h5><%=users[i].zip%></h5>
+    </div>
+    <div class = "col-xs-1 text-center">
+    <%if(users[i].type === 0){ %>
+      <form action="/admin/<%= users[i]._id %>?_method=DELETE" method="POST">
+        <button class="btn btn-danger btn-xs">Delete User</button>
+      </form>
+    <%} else{%>
+      <form action="/admin/<%= users[i]._id %>?_method=DELETE" method="POST">
+        <button class="btn btn-info btn-xs">Delete Admin</button>
+      </form>
+    <% } %>
+    </div>
+  </div>
+  <%
+  }
+  %>
+</div>
+<% include layouts/footer %>

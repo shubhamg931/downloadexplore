@@ -1,0 +1,103 @@
+  </div>
+  <div class="col-md-2 stats">
+    <%# <button>Amm</button>%>
+    <h3 class="text-center">Top Trending Downloads!</h3>
+    <br>
+    <div class="row">
+      <div class="col-xs-2 text-center">
+        Rank
+      </div>
+      <div class="col-xs-2">
+      </div>
+      <div class="col-xs-8 text-center">
+        Name
+      </div>
+      <br><br>
+
+<%
+if(outputs){
+outputs.sort(function(a, b){return a.clicks - b.clicks});
+//console.log("length trending:" + outputs.length);
+len = outputs.length;
+if(len>10)
+x = 10;
+else {
+  x = len;
+}
+c = 0;
+          for( i = len - 1;i > len - 1 - x;--i){
+            while(1){
+              if(outputs[i-c].lid == 31 ||outputs[i-c].lid == 33 ||outputs[i-c].lid == 35 ||outputs[i-c].lid == 37 ||outputs[i-c].lid == 39 ||outputs[i-c].lid == 41 ||outputs[i-c].lid == 43 ||outputs[i-c].lid == 45 ||outputs[i-c].lid == 47 ||outputs[i-c].lid == 49){
+                break;
+              }
+              else{
+                c++;
+              }
+            }
+            %>
+          <div class="col-xs-2 text-center pull-left">
+            <%= len - i %>
+          </div>
+          <div class="col-xs-10 text-center">
+            <div class="thumbnail side">
+              <img style="margin-left =0" src=<%=outputs[i-c].logo%>>
+              <div class="caption initial">
+                <h6><%= outputs[i-c].name %></h6>
+              </div>
+            </div>
+          </div>
+
+        <%
+        if(i === 10)
+          break;
+        }
+      }%>
+    </div>
+  </div>
+</div>
+      <footer id="myFooter">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h5>Get started</h5>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="#">Sign up</a></li>
+                        <li><a href="/pages">Downloads</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h5>About us</h5>
+                    <ul>
+                        <li><a href="/about">Company Information</a></li>
+                        <li><a href="/about">Contact us</a></li>
+                        <li><a href="/about">Reviews</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h5>Support</h5>
+                    <ul>
+                        <li><a href="/about">FAQ</a></li>
+                        <li><a href="/contact">Help desk</a></li>
+                        <li><a href="#">Forums</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 info">
+                    <h5>Information</h5>
+                    <p>Downloadexplore is a simple platform to help you find your paid downloads at 0.00$ with ease! Just enter your email address and get redirected to your downloads page. </p>
+                </div>
+            </div>
+        </div>
+        <div class="second-bar">
+           <div class="container">
+                <h2 class="logo"><a href="#"> DownloadExplore </a></h2>
+                <div class="social-icons">
+                    <a href="#" class="twitter"><span class="fa fa-twitter"></span></i></a>
+                    <a href="#" class="facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                    <a href="#" class="google"><i class="fa fa-google-plus"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+  </body>
+</html>

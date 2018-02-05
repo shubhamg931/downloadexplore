@@ -1,0 +1,100 @@
+<% include layouts/header %>
+  <link rel="stylesheet" href="/stylesheets/index.css">
+  <div class = "inside">
+    <div class="container main text-center">
+      <div id="google_translate_element" style="text-align:left;"></div><script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+      }
+      </script><script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+      <br><br>
+      <img class="logo1" src="images/logo.png">
+      <br><br><br>
+      <div class="btw">
+        <h2><i class="fa fa-download" aria-hidden="true"></i>
+        Place to find all your Downloads at 0$!!</h2>
+        <h3>Just Share your Valuable Time and Valid Email address/details and you are good to go!</h3>
+        <h3> It is that Simple <i class="fa fa-thumbs-up" aria-hidden="true"></i></h3>
+        <br><br>
+        <p>We at Downloadexplore find your Downloads and provide them to you in few clicks!</p>
+        <p>Because no one likes to wait!  <a data-toggle="modal" data-target="#myModal" class="highlight" style="text-decoration:none; cursor:pointer;">Why should you choose us?</a></p>
+        <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel">
+          <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel" style="color:black;">Why we?</h4>
+            </div>
+            <div class="modal-body">
+                <p style="color: black; font-size:20px;">Unlike you finding your downloads yourself, we have already have them there for you. We are giving you your downloads in exchange of some basic info. There are no fake promises, if you are doing as directed! No fake sources... legit content. All you need to do is follow along!
+                </p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+        <br>
+      </div>
+      <br><br>
+      <a href="downloads"><button class="btn btn-lg btn-success button"><i class="fa fa-check" aria-hidden="true"></i> Find downloads!</button></a>
+      <iframe src="https://www.youtube.com/embed/piIpQlpTdXQ" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </div>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="automatic" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title text-center" id="myModalLabel">Welcome to DownloadExplore!</h4>
+        </div>
+        <div class="modal-body" style="font-family: 'Josefin Sans', sans-serif;">
+            <h3 class="text-center">We serve the best content for you all!</h3>
+            <br>
+            <h4>We are buliding a platform for you to find all your Downloads at one place! So Stop thinking... Start Exploring!</h4>
+            <br>
+            <h2 class="text-center">Subscribe to our Newsletter for latest offers and stuff!</h2>
+            <br>
+            <img src="http://yournerdybestfriend.com/wp-content/uploads/2014/10/Beth-Cartoon-with-Sign-Get-the-Newsletter.png" style="width:50%">
+            <br><br><br>
+            <form action="/email/general" method="POST">
+              <div class="form-group">
+                <label for="Name">Your Name</label>
+                <input type="name" class="form-control" id="Name" name="name" placeholder="Your Full Name goes in here" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter your Valid Email Address" required>
+              </div>
+              <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+<%if(subscribed === 0){%>
+<script type="text/javascript">
+setTimeout(
+  function()
+  {
+    $('#automatic').modal({
+      keyboard: false
+    })
+    //do something special
+  }, 5000);
+</script>
+<%}%>
+<% include layouts/footer %>
